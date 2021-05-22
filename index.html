@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="google-site-verification" content="KebD-j3Yl5qeIeWuY17A6EalW2cZtfBEDAJu3O-Vezo" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VacSeen</title>
+  <meta name="description" content="A website to mitigate the supply-demand imbalance in Agriculture.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+  <link href='css/main.css' rel='stylesheet' />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+  </script>
+  <script src="js/app.js" defer></script>
+  <script src='js/mapinitiate.js' defer></script>
+  <script src='js/modal.js' defer></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id='navbar'>
+    <div class="container-fluid">
+      <a class="navbar-brand ms-2" href="#">VacSeen</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse navbar-center " id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+        </ul>
+        <ul class="navbar-nav  navbar-center">
+          <li class="nav-item">
+            <button type="button" class="btn btn-outline-light me-2">Age 18+</button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-outline-light me-2">Age 45+</button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-outline-light me-2">Covishield</button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-outline-light me-2">Covaxin</button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-outline-light me-2">Sputnik V</button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-outline-light me-2">Free</button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-outline-light me-2">Paid</button>
+          </li>
+        </ul>
+        <ul class="navbar-nav  navbar-right">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!--
+    <ul id = "navbar">
+        <li><a href="#home">Home</a></li>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Select Crop ▼ </a>
+            <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+        </li>
+       <li>
+        <select name="cars" id="cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select>
+       </li>
+        <li style="float:right" class="usernothere"><button id="signinbtn" class="grnbtn button">Sign In with
+                Google</button></li>
+        <li style="float:right" class="userishere" hidden="true"><button id="signoutbtn" class="grnbtn button "
+                >Sign Out</button></li>
+                <li style="float:right" class="userishere" hidden="true">
+                    <div id="username" ></div>
+                </li>
+        <li style="float:right" class="userishere" hidden="true"><button id="addcropbtn" class="grnbtn button "
+                >Add Crop</button></li>
+        <li style="float:right" class="userishere" hidden="true"><button id="delcropbtn" class="redbtn button "
+                >Delete Crop</button></li>
+        
+
+    </ul>
+  -->
+
+  <div id='map'></div>
+
+</body>
+
+</html>
