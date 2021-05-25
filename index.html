@@ -17,9 +17,7 @@
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
     crossorigin="anonymous"></script>
   </script>
-  <script src="js/app.js" defer></script>
-  <script src='js/mapinitiate.js' defer></script>
-  <script src='js/modal.js' defer></script>
+  <script src='js/index.js' defer></script>
 </head>
 
 <body>
@@ -34,26 +32,40 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         </ul>
         <ul class="navbar-nav  navbar-center">
-          <li class="nav-item">
-            <button type="button" class="btn btn-outline-light me-2">Age 18+</button>
+          <li class="nav-item me-2">
+            <input type="checkbox" class="btn-check" id="btn-check-1-outlined" onclick="dataToggle()" autocomplete="off"
+              value="18">
+            <label class="btn btn-outline-light shadow-none" for="btn-check-1-outlined">Age 18+</label><br>
           </li>
-          <li class="nav-item">
-            <button type="button" class="btn btn-outline-light me-2">Age 45+</button>
+          <li class="nav-item me-2">
+            <input type="checkbox" class="btn-check" id="btn-check-2-outlined" onclick="dataToggle()" autocomplete="off"
+              value="45">
+            <label class="btn btn-outline-light shadow-none" for="btn-check-2-outlined">Age 45+</label><br>
           </li>
-          <li class="nav-item">
-            <button type="button" class="btn btn-outline-light me-2">Covishield</button>
+          <li class="nav-item me-2">
+            <input type="checkbox" class="btn-check" id="btn-check-3-outlined" onclick="dataToggle()" autocomplete="off"
+              value="Covishield">
+            <label class="btn btn-outline-light shadow-none" for="btn-check-3-outlined">Covishield</label><br>
           </li>
-          <li class="nav-item">
-            <button type="button" class="btn btn-outline-light me-2">Covaxin</button>
+          <li class="nav-item me-2">
+            <input type="checkbox" class="btn-check" id="btn-check-4-outlined" onclick="dataToggle()" autocomplete="off"
+              value="Covaxin">
+            <label class="btn btn-outline-light shadow-none" for="btn-check-4-outlined">Covaxin</label><br>
           </li>
-          <li class="nav-item">
-            <button type="button" class="btn btn-outline-light me-2">Sputnik V</button>
+          <li class="nav-item me-2">
+            <input type="checkbox" class="btn-check" id="btn-check-5-outlined" onclick="dataToggle()" autocomplete="off"
+              value="Sputnik V">
+            <label class="btn btn-outline-light shadow-none" for="btn-check-5-outlined">Sputnik V</label><br>
           </li>
-          <li class="nav-item">
-            <button type="button" class="btn btn-outline-light me-2">Free</button>
+          <li class="nav-item me-2">
+            <input type="checkbox" class="btn-check" id="btn-check-6-outlined" onclick="dataToggle()" autocomplete="off"
+              value="Free">
+            <label class="btn btn-outline-light shadow-none" for="btn-check-6-outlined">Free</label><br>
           </li>
-          <li class="nav-item">
-            <button type="button" class="btn btn-outline-light me-2">Paid</button>
+          <li class="nav-item me-2">
+            <input type="checkbox" class="btn-check" id="btn-check-7-outlined" onclick="dataToggle()" autocomplete="off"
+              value="Paid">
+            <label class="btn btn-outline-light shadow-none" for="btn-check-7-outlined">Paid</label><br>
           </li>
         </ul>
         <ul class="navbar-nav  navbar-right">
@@ -64,44 +76,12 @@
       </div>
     </div>
   </nav>
-
-  <!--
-    <ul id = "navbar">
-        <li><a href="#home">Home</a></li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Select Crop ▼ </a>
-            <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div>
-        </li>
-       <li>
-        <select name="cars" id="cars">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-          </select>
-       </li>
-        <li style="float:right" class="usernothere"><button id="signinbtn" class="grnbtn button">Sign In with
-                Google</button></li>
-        <li style="float:right" class="userishere" hidden="true"><button id="signoutbtn" class="grnbtn button "
-                >Sign Out</button></li>
-                <li style="float:right" class="userishere" hidden="true">
-                    <div id="username" ></div>
-                </li>
-        <li style="float:right" class="userishere" hidden="true"><button id="addcropbtn" class="grnbtn button "
-                >Add Crop</button></li>
-        <li style="float:right" class="userishere" hidden="true"><button id="delcropbtn" class="redbtn button "
-                >Delete Crop</button></li>
-        
-
-    </ul>
-  -->
-
   <div id='map'></div>
-
+  <div id="scrolling">
+    <marquee class="navbar-dark bg-dark">Marker used are made by <a href="https://www.freepik.com"
+        title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"
+        title="Flaticon">www.flaticon.com</a>&nbsp&nbsp&nbsp&nbsp | &nbsp&nbsp&nbsp&nbsp Hello</marquee>
+  </div>
 </body>
 
 </html>
