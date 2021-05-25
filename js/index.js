@@ -65,7 +65,7 @@ function setupmap(center, zoom) {
 }
 
 map.on('load', async function mapLoad() {
-    map.loadImage('/vaccine.png', function (error, image) {
+    map.loadImage('vaccine.png', function (error, image) {
         if (error) {
             x = 'rocket-15'
             throw error
@@ -100,7 +100,7 @@ map.on('load', async function mapLoad() {
         'type': 'symbol',
         'source': 'vacData',
         'layout': {
-            'icon-image': x
+            'icon-image': 'vaccine'
         }
     });
 })
