@@ -12,12 +12,35 @@ let toggleFree = document.getElementById("btn-check-6-outlined")
 let togglePaid = document.getElementById("btn-check-7-outlined")
 let j
 let x
+var selectDate = document.getElementById("dateSelect")
 
 var geoJson = {
     "type": "FeatureCollection",
     "features": [
     ]
 }
+//"<div><h6>" + e.features[0].properties.name, "</h6>"+"<p>"+e.features[0].properties.name+"</p>"+"</div>"
+var today = new Date();
+var dd = String(today.getDate() ).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0');
+var yyyy = today.getFullYear();
+today = dd + '-' + mm + '-' + yyyy;
+console.log(today)
+
+for (i = 0; i < 7; i++) {
+    var date = new Date();
+    console.log(i, today)
+    date.setDate(date.getDate() + i)
+    console.log(date)
+    var dd = String(date.getDate()).padStart(2, '0');
+    var mm = String(date.getMonth() + 1).padStart(2, '0');
+    var yyyy = date.getFullYear();
+    date = dd + '-' + mm + '-' + yyyy;
+    var option = document.createElement("option");
+    option.text = date;
+    selectDate.add(option);
+}
+selectDate.value = today
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoicm9zaGFuYmlzd2EiLCJhIjoiY2tscDkzcTRuMDZ1dDJvcno4N2x5cTBndCJ9.TTXt2BREv0lGoSH2b-02Yg';
 
@@ -26,7 +49,7 @@ navigator.geolocation.getCurrentPosition(successlocation, errorlocation, { enabl
 document.getElementById("map").style.top = (document.getElementById("navbar").offsetHeight).toString() + "px"
 document.getElementById("map").style.bottom = (document.getElementById("scrolling").offsetHeight).toString() + "px"
 
-let mystyle = "mapbox://styles/roshanbiswa/ckp3xkgde0jyf18pvw7se4tvv"
+let mystyle = "mapbox://styles/mapbox/streets-v11"
 var map = new mapboxgl.Map({
     container: 'map',
     center: [84.811423, 19.307343],
@@ -96,29 +119,78 @@ map.on('load', async function mapLoad() {
     })
     map.addSource('vacData', { type: "geojson", data: geoJson })
     map.addLayer({
-        'id': 'vacData',
+        'id': 'vacJson',
         'type': 'symbol',
         'source': 'vacData',
         'layout': {
+            "icon-allow-overlap" : true,
+            "text-allow-overlap": true,
+            "icon-ignore-placement" : true,
+            "text-ignore-placement" : true,
+            'visibility': 'visible',
             'icon-image': 'vaccine'
         }
     });
+    map.on('click', 'vacJson', function (e) {
+        console.log(e.features)
+        let popupData = {"18" : [],"45":[]}
+        filteredSessionsList.forEach(function (session) {
+            if (session.center_id == e.features[0].properties.center_id){
+                if (session.min_age_limit == 18){popupData["18"].push(session)}
+                if (session.min_age_limit == 45){popupData["45"].push(session)}
+            }
+        })
+        console.log(popupData)
+        let popupstr = "<div id="+"popup1"+" class="+"overlay"+">"
+        popupstr+="<div class='popup'><h5>"+e.features[0].properties.name+"</h5><div class='content'>"+e.features[0].properties.address+"</div>"
+        if (popupData["18"].length){
+            popupstr+= "<div class='content'>Age 18+ : "+"</div>"
+            if (popupData["18"][0]["available_capacity"]==0){
+                popupstr += "<span class='badge rounded-pill bg-danger'>Booked</span>"
+            }
+            else{
+                popupstr+= "<span class='badge rounded-pill bg-success'>"+popupData["18"][0]["available_capacity"]+" Doses Available"+"</span>"
+                popupstr+= "<span > Dose 1 :"+popupData["18"][0]["available_capacity_dose1"]+"Dose 2 :"+popupData["18"][0]["available_capacity_dose2"]+"</span>"
+            }
+        }
+        if (popupData["45"].length){
+            popupstr+= "<div class='content'>Age 45+ : "+"</div>"
+            if (popupData["45"][0]["available_capacity"]==0){
+                popupstr += "<span class='badge rounded-pill bg-danger'>Booked</span>"
+            }
+            else{
+                popupstr+= "<span class='badge rounded-pill bg-success'>"+popupData["45"][0]["available_capacity"]+" Doses Available"+"</span><br>"
+                popupstr+= "<span > Dose 1 :"+popupData["45"][0]["available_capacity_dose1"]+"   Dose 2 :"+popupData["45"][0]["available_capacity_dose2"]+"</span>"
+
+            }
+        }
+        popupstr += "</div>"
+        new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(popupstr)
+            .addTo(map);
+    });
+
+    // Change the cursor to a pointer when the mouse is over the states layer.
+    map.on('mouseenter', 'vacJson', function () {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'vacJson', function () {
+        map.getCanvas().style.cursor = '';
+    });
+    map.on('moveend', async function mapOnMove() {
+        centre = await map.getCenter()
+        y = await getCenters(centre.lat, centre.lng)
+        z = await getSessions()
+        a = await filterSessions()
+        b = await mapUpdate()
+    })
 })
 
-map.on('moveend', async function mapOnMove() {
-    centre = await map.getCenter()
-    y = await getCenters(centre.lat, centre.lng)
-    z = await getSessions()
-    a = await filterSessions()
-    b = await mapUpdate()
-})
 
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); 
-var yyyy = today.getFullYear();
-today = dd + '-' + mm + '-' + yyyy;
-console.log(today)
+
 
 districtIds = {
     'Adilabad': 582, 'Agar': 320, 'Agatti Island': 796, 'Agra': 622, 'Ahmedabad': 154, 'Ahmedabad Corporation': 770, 'Ahmednagar': 391, 'Aizawl East': 425, 'Aizawl West': 426, 'Ajmer': 507, 'Akola': 364, 'Alappuzha': 301, 'Aligarh': 623, 'Alipurduar District': 710, 'Alirajpur': 357, 'Almora': 704, 'Alwar': 512, 'Ambala': 193, 'Ambedkar Nagar': 625, 'Amethi': 626, 'Amravati': 366, 'Amreli': 174, 'Amritsar': 485, 'Amroha': 627, 'Anand': 179, 'Anantapur': 9, 'Anantnag': 224, 'Angul': 445, 'Anjaw': 22, 'Anuppur': 334, 'Aranthangi': 779, 'Araria': 74, 'Aravalli': 158, 'Ariyalur': 555, 'Arwal': 78, 'Ashoknagar': 354, 'Attur': 578, 'Auraiya': 628, 'Aurangabad': 77,
@@ -238,4 +310,13 @@ function mapUpdate() {
         }
     })
     map.getSource('vacData').setData(geoJson)
+}
+
+async function changeDate() {
+    today = selectDate.value
+    centre = await map.getCenter()
+    y = await getCenters(centre.lat, centre.lng)
+    z = await getSessions()
+    a = await filterSessions()
+    b = await mapUpdate()
 }
