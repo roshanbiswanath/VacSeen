@@ -13,7 +13,6 @@ let togglePaid = document.getElementById("btn-check-7-outlined")
 let j
 let x
 var selectDate = document.getElementById("dateSelect")
-
 var geoJson = {
     "type": "FeatureCollection",
     "features": [
@@ -320,3 +319,5 @@ async function changeDate() {
     a = await filterSessions()
     b = await mapUpdate()
 }
+
+
