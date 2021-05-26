@@ -7,12 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VacSeen</title>
-  <link rel="icon" href="vaccine.png">
-  <meta name="description" content="A site for Vaccination locations to be seen">
+  <meta name="description" content="A website to mitigate the supply-demand imbalance in Agriculture.">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
   <link href='css/main.css' rel='stylesheet' />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
@@ -29,10 +28,8 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse navbar-center " id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-        </ul>
-        <ul class="navbar-nav  navbar-center">
+      <div class="collapse navbar-collapse navbar-center justify-content-center" id="navbarSupportedContent">
+        <ul class="navbar-nav ">
           <li class="nav-item me-2">
             <input type="checkbox" class="btn-check" id="btn-check-1-outlined" onclick="dataToggle()" autocomplete="off"
               value="18">
@@ -75,21 +72,21 @@
               </option>
             </select>
           </li>
-        </ul>
-        <ul class="navbar-nav  navbar-right">
-          <li class="nav-item">
+          <li class="nav-item ms-10">
             <a class="nav-link active" aria-current="page" href="#">About</a>
           </li>
         </ul>
       </div>
+
     </div>
   </nav>
   <div id='map'></div>
   <div id="scrolling">
-    <marquee class="navbar-dark bg-dark">Marker used are made by <a href="https://www.freepik.com"
-        title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"
-        title="Flaticon">www.flaticon.com</a>&nbsp&nbsp&nbsp&nbsp | &nbsp&nbsp&nbsp&nbsp Hello</marquee>
+    <marquee class="navbar-dark bg-dark" onmouseover="this.stop();" onmouseout="this.start();"> Note : The mapdata being shown is fetched from <a href = "https://apisetu.gov.in/public/api/cowin#/"> CoWIN API</a> which in turn is sourced from Local Government and Private Hospitals. So the data shown here may vary from the actual location Please verify the location before vaccinating.   |   Marker used are made by <a href="https://www.freepik.com"
+      title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"
+      title="Flaticon">www.flaticon.com</a>&nbsp&nbsp&nbsp&nbsp | &nbsp&nbsp&nbsp&nbsp The website was developed by <a href="https://www.roshanbiswanath.netlify.app"
+      title="Biswanath">P.Biswanath Patra</a>, a student of class XII Kendriya Vidyalaya, Berhampur.&nbsp&nbsp&nbsp&nbsp | &nbsp&nbsp&nbsp&nbsp Social Media Links - 
+      <a href="https://roshanbsiwanath.netlify.app"> Website</a>, <a href="https://github.com/roshanbiswanath">Github</a>, <a href="https://www.youtube.com/channel/UCZsvc161kTZGHMLC4itqprA">YouTube</a>, <a href="https://www.instagram.com/roshanbiswanath/">Instagram</a>, <a href="https://twitter.com/roshanbiswanath">Twitter</a></marquee>
   </div>
 </body>
-
 </html>
