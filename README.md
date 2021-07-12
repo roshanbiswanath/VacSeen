@@ -1,2 +1,2 @@
 # VacSeen
-vac-seen.netlify.app
+https://vac-seen.netlify.app
