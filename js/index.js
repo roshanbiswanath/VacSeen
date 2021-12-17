@@ -72,6 +72,12 @@ map.addControl(
         }
     }), "bottom-right")
 
+map.addControl(
+    new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl,
+        marker: false
+    }), "top-left")
 
 function successlocation(position) {
     setupmap([position.coords.longitude, position.coords.latitude], 15)
